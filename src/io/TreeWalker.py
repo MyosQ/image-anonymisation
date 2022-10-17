@@ -73,6 +73,8 @@ class Paths:
 
     @property
     def error_output_dir(self):
+        if config.error_output_dir:
+            return config.error_output_dir
         error_extension = "_error"
         # Add the extension to the base output path
         base_error_path = self.base_output_dir + error_extension
