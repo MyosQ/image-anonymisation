@@ -1,0 +1,9 @@
+tensorflow-gpu==2.10.0
+opencv-python==4.6.0.66
+PyYAML==6.0
+Cython==0.29.32
+scipy==1.9.2
+iso8601==1.1.0
+webp==0.1.4
+cx-Oracle==8.3.0
+xmltodict==0.13.0

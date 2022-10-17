@@ -14,7 +14,7 @@ def prepare_img(input_file):
     :return: Loaded image
     :rtype: tf.python.framework.ops.EagerTensor
     """
-    tf.numpy_function(wait_until_path_is_found, [input_file], tf.int32)
+    tf.numpy_function(wait_until_path_is_found, [input_file], tf.int64)
     img_data = tf.io.read_file(input_file)
     img = tf.image.decode_jpeg(img_data)
     img = tf.expand_dims(img, 0)
@@ -55,7 +55,7 @@ def get_tf_dataset(tree_walker):
 
 @tf.function
 def check_input_img_tf(img):
-    tf.numpy_function(check_input_img, [img], tf.int32)
+    tf.numpy_function(check_input_img, [img], tf.int64)
 
 
 def check_input_img(img):

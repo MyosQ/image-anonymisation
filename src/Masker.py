@@ -197,7 +197,7 @@ def _filter_detections(masking_results):
     :rtype: dict
     """
     result_keys = ["num_detections", "detection_classes", "detection_scores", "detection_boxes", "detection_masks"]
-    output_types = [tf.int32, tf.int32, tf.float32, tf.float32, tf.float32]
+    output_types = [tf.int64, tf.int32, tf.float32, tf.float32, tf.float32]
     input_tensors = [masking_results[k] for k in result_keys]
     filtered_tensors = tf.numpy_function(_filter_detections_numpy, inp=input_tensors, Tout=output_types)
     filtered_results = dict(zip(result_keys, filtered_tensors))
