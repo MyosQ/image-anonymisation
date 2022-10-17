@@ -7,3 +7,4 @@ iso8601==1.1.0
 webp==0.1.4
 cx-Oracle==8.3.0
 xmltodict==0.13.0
+cryptography==38.0.1

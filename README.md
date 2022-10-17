@@ -4,108 +4,11 @@ Using pre-trained TensorFlow models to remove vehicles and people from images
 ## Getting started
 #### Clone or download the code
 
-**Option 1 - With Git:** 
-`git clone https://github.com/NPRA/image-anonymisation.git` (Requires `git` to be installed)
+** With Git:** 
+`git clone https://github.com/MyosQ/image-anonymisation.git` (Requires `git` to be installed)
 
-**Option 2 - Manual download:**
-Select "Clone or download" and "Download ZIP" above. Then extract the downloaded archive to a suitable 
-location.
-
-#### Installing Build Tools for Visual Studio 2019
-Build Tools for Visual Studio 2019 is required to build some of the package-dependencies. 
-1. Download the [installer](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16).
-2. Run the installer as Administrator
-3. Select "C++ build tools" during installation.
-
-#### Installing Anaconda
-1. Download the [installer](https://www.anaconda.com/distribution/).
-2. Run installer as Administrator.
-3. Select "Install for all users" during installation.
-
-#### Creating the conda-environment
-1. Open an "Anaconda PowerShell Prompt" as Administrator.
-
-2. In the Anaconda PowerShell Prompt, navigate to the root directory of the cloned repository.
-
-3. Create the conda-environment by running:
-    ```Bash
-    conda env create -f environment.yml
-    ```
-
-   This will create a new environment named `image-anonymisation`.
-4. Activate the environment by running:
-    ```Bash
-    conda activate image-anonymisation
-    ```
-   NOTE: If you are unable to run the script in a terminal with conda initialized, you can use the
-   `bin/run.ps1` (PowerShell only) script, with the `-conda_path` argument to invoke the application.
-
-#### Installing the Oracle Instant Client
-[Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client/downloads.html)
-(or any other Oracle Database installation which contains the Oracle Client libraries) is required when
-using the optional database functionality. Download the client, and add the path to the `instantclient_xx_x`
-folder to the `PATH` environment variable.
-
-NOTE: If you do not want to modify the `PATH` variable, you can use `bin/run.ps1`, with the `-oracle_path` argument
-to invoke the application instead.
-
-#### Proxy setup
-If Anaconda fails to create the environment above due to a HTTP error, you might need to configure Anaconda to use
-a proxy. Set the following environment variables:
-```
-HTTPS_PROXY=<your_proxy>
-```
-and
-```
-HTTP_PROXY=<your_proxy>
-```
-(These are only required for installation and model downloading, and can therefore be removed after the environment has
-been created, and the model file has been downloaded.)
-
-You should now be able to create the environment with the same command as above.
-
-### Manual proxy configuration in conda and pip
-
-If you are unable to set the environment variables, you can specify the proxy to anaconda and pip directly.
-
-1. In `~/.condarc` add the following lines:
-    ```yaml
-    proxy_servers:
-        https: <your_proxy>
-    ```
-
-3. You should now be able to create the conda environment with:
-    ```Bash
-    conda env create -f environment.yml
-    ```
-
-   Note that the `pip`-part of the installation will fail, but the conda packages will be installed.
-
-4. Activate the environment:
-    ```Bash
-    conda activate image-anonymisation
-    ```
-
-5. The `pip`-packages will now have to be installed manually:
-    ```Bash
-    pip install cx-oracle==7.3.0 func-timeout==4.3.5 iso8601==0.1.12 m2r==0.2.1 opencv-python==4.2.0.32 pillow==7.0.0 --proxy <your_proxy>
-    ```
-
-   The `webp` package requires a little more work. First, install `importlib_resources` and `conan`:
-    ```Bash
-    pip install importlib_resources>=1.0.0  conan>=1.8.0 --proxy <your_proxy>
-    ```
-
-   Now, `conan` has to be configured to use the proxy server. In `~/.conan/conan.conf` under `[proxies]`, add the lines:
-    ```python
-    http = <your_proxy>
-    https = <your_proxy>  
-    ```
-
-   The `webp` package can now be installed with
-    ```
-    pip install webp==0.1.0a15 --proxy <your_proxy>
-    ```
+## install packages
+`pip install -r requirements.txt`
 
 ## Usage
 The program will traverse the file-tree rooted at the input folder, and mask all .jpg images within the tree. The masked
