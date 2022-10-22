@@ -2,9 +2,8 @@
 Using pre-trained TensorFlow models to remove vehicles and people from images
 
 ## Getting started
-#### Clone or download the code
+#### Clone
 
-** With Git:** 
 `git clone https://github.com/MyosQ/image-anonymisation.git` (Requires `git` to be installed)
 
 ## install packages
@@ -37,18 +36,6 @@ optional arguments:
                         details. Default is config\default_config.yml
 ```
 
-Note: Make sure that the conda environment is activated before executing the command above.
-
-#### Batch script and PowerShell script.
-The anonymisation can be ran without manually activating the conda environment, by running either `bin/run-with-prompt.bat` or `bin/run.ps1`.
-The latter also works when conda is not initialized in the shell, as long as the `conda_path` parameter is specified correctly.
-
-## Documentation
-The HTML documentation can be built from the `docs` directory by running
-```
-.\make.bat html
-```
-
 ## Configuration
 The user-specifiable configuration parameters can be found in [config/default_config.yml](config/default_config.yml). The available parameters are listed below.
 
@@ -73,6 +60,7 @@ The user-specifiable configuration parameters can be found in [config/default_co
 * `remote_mask`: Write mask file to the output (remote) directory?
 * `local_mask`: Write the mask file to the input (local) directory?
 * `archive_mask`: Write mask file to the archive directory?
+* `error_output_dir`: Directory to which to write faulty images. Default: /errors
 
 #### Parameters for asynchronous execution
 * `enable_async`: Enable asynchronous post-processing? When True, the file exports (anonymised image, mask file and JSON file) will be executed asynchronously in order to increase processing speed.
